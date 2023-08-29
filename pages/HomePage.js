@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Notifications} from 'expo-notifications';
 import { View, Text, Image, TouchableOpacity, FlatList } from 'react-native';
 import axios from 'axios';
 import { useCart } from '../CartContext';
@@ -12,7 +13,20 @@ const HomePage = ({ navigation }) => {
 
   useEffect(() => {
     fetchProducts();
+    registerForPushNotificationsAsync();
   }, []);
+
+  const registerForPushNotificationsAsync = async () => {
+    // Check permissions
+    const { status } = await Notifications.getPermissionsAsync();
+    if (status !== 'granted') {
+      const { status: newStatus } = await Notifications.requestPermissionsAsync();
+      if (newStatus !== 'granted') {
+        console.log('Notification permissions not granted.');
+        return;
+      }
+    }
+  };
 
   const fetchProducts = async () => {
     try {
@@ -33,6 +47,19 @@ const HomePage = ({ navigation }) => {
     })
       .then((response) => {
         console.log('Item added to cart', response);
+
+        const notificationTitle = 'New Product Added';
+        const notificationBody = `The product ${product.name} has been added to the cart.`;
+
+        Notifications.presentNotificationAsync({
+          content: {
+            title: notificationTitle,
+            body: notificationBody,
+          },
+          trigger: null, // Send immediately
+        }).then((notificationId) => {
+          console.log('Notification scheduled', notificationId);
+        });
       })
       .catch((error) => {
         console.error('Error adding item to cart', error);
