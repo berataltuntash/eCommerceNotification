@@ -11,15 +11,24 @@ const styles = {
     product: {
       marginBottom: 16,
     },
-    productImage: {
-      width: 100,
-      height: 100,
-      resizeMode: 'cover',
+    productImageContainer: {
+      width: '100%',
+      aspectRatio: 1, 
       marginBottom: 8,
     },
-    productPrice: {
+    productImage: {
+      width: '100%',
+    height: '100%', 
+    resizeMode: 'cover',
+    },
+    productName: {
       fontSize: 18,
       fontWeight: 'bold',
+      marginBottom: 4, 
+    },
+    productPrice: {
+      fontSize: 16,
+      marginBottom: 4,
     },
     addToCartButton: {
       backgroundColor: 'blue',

@@ -99,7 +99,7 @@ const ShoppingCart = ({ navigation }) => {
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <View style={styles.cartItem}>
-            <Image source={{ uri: item.product.Image }} style={styles.productImage} />
+            <Image source={{ uri: item.product.image_link }} style={styles.productImage} />
             <View style={styles.itemDetails}>
               <Text style={styles.itemName}>{item.product.name}</Text>
               <Text style={styles.price}>Price: ${item.product.price}</Text>
