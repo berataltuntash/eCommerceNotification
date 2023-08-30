@@ -43,7 +43,7 @@ const CheckoutPage = ({ navigation }) => {
 
 
     axios
-      .post('http://192.168.1.48:8080/api/order', user_id, {
+      .post('http://10.8.63.162:8080/api/order', user_id, {
         headers: { 'Content-Type': 'application/json' },
       })
       .then(() => {

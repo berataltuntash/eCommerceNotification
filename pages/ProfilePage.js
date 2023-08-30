@@ -9,7 +9,7 @@ const ProfilePage = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      axios.get(`http://192.168.1.48:8080/api/login`, { params: { id:user_id } })
+      axios.get(`http://10.8.63.162:8080/api/login`, { params: { id:user_id } })
         .then(response => {
           setUser(response.data);
         })

@@ -28,7 +28,7 @@ const ProductDetailsPage = ({ route }) => {
       userId: user_id,
     };
     console.log(cartData);
-    axios.post('http://192.168.1.48:8080/api/cart/add', cartData, {
+    axios.post('http://10.8.63.162:8080/api/cart/add', cartData, {
       headers: { 'Content-Type': 'application/json' },
     })
       .then((response) => {

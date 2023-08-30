@@ -3,10 +3,10 @@ import { View, Text, Image, TouchableOpacity, FlatList } from 'react-native';
 import axios from 'axios';
 import { useCart } from '../CartContext';
 import styles from '../styling/HomePageStyles'; // Your styles
-
-const homeURL = 'http://192.168.1.48:8080/api/products';
-const addURL = 'http://192.168.1.48:8080/api/cart/add';
-const sendNotificationURL = 'http://192.168.1.48:8080/api/notification/send-message';
+//192.168.1.48 is the IP address of my computer on my local network.
+const homeURL = 'http://10.8.63.162:8080/api/products';
+const addURL = 'http://10.8.63.162:8080/api/cart/add';
+const sendNotificationURL = 'http://10.8.63.162:8080/api/notification/send-message';
 const HomePage = ({ navigation }) => {
   const [products, setProducts] = useState([]);
   const { user_id } = useCart();
@@ -54,7 +54,7 @@ const HomePage = ({ navigation }) => {
 
   return (
     <View style={styles.homePage}>
-      <Text style={styles.pageTitle}>Welcome to the E-commerce Store</Text>
+      <Text style={styles.pageTitle}>Supportlements</Text>
       <FlatList
         data={products}
         keyExtractor={(item) => item.id.toString()}

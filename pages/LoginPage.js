@@ -17,7 +17,7 @@ const LoginPage = () => {
       password,
     };
 
-    axios.post('http://192.168.1.48:8080/api/login/check-login', loginData, {
+    axios.post('http://10.8.63.162:8080/api/login/check-login', loginData, {
       headers: { 'Content-Type': 'application/json' },
     })
       .then(response => {
