@@ -14,7 +14,7 @@ const ThankYouPage = () => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.orderDetailsLink}
-          onPress={() => navigation.navigate('Home')}
+          onPress={() => navigation.navigate('Profile')}
         >
           <Text style={styles.orderDetailsLinkText}>Order Details</Text>
         </TouchableOpacity>

@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, TouchableOpacity, FlatList } from 'react-native';
+import { View, Text, Image, TouchableOpacity, FlatList, TextInput } from 'react-native';
 import axios from 'axios';
 import { useCart } from '../CartContext';
 import styles from '../styling/HomePageStyles'; // Your styles
 //192.168.1.48 is the IP address of my computer on my local network.
-const homeURL = 'http://10.8.63.162:8080/api/products';
-const addURL = 'http://10.8.63.162:8080/api/cart/add';
-const sendNotificationURL = 'http://10.8.63.162:8080/api/notification/send-message';
+const homeURL = 'http://192.168.1.48:8080/api/products';
+const addURL = 'http://192.168.1.48:8080/api/cart/add';
+const sendNotificationURL = 'http://192.168.1.48:8080/api/notification/send-message';
 const HomePage = ({ navigation }) => {
   const [products, setProducts] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
   const { user_id } = useCart();
-
+  const filteredProducts = products.filter(item => item.name.toLowerCase().includes(searchQuery.toLowerCase()));
   useEffect(() => {
     fetchProducts();
   }, []);
+
   const fetchProducts = async () => {
     try {
       const response = await axios.get(homeURL);
@@ -54,9 +56,15 @@ const HomePage = ({ navigation }) => {
 
   return (
     <View style={styles.homePage}>
-      <Text style={styles.pageTitle}>Supportlements</Text>
+      <Text style={styles.pageTitle}>Sportlements</Text>
+      <TextInput
+        style={styles.searchBar}
+        placeholder="Search products..."
+        value={searchQuery}
+        onChangeText={text => setSearchQuery(text)}
+      />
       <FlatList
-        data={products}
+        data={filteredProducts}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <View style={styles.product}>

@@ -13,7 +13,7 @@ const ShoppingCart = ({ navigation }) => {
   }, []);
 
   const fetchCartItems = () => {
-    axios.get('http://10.8.63.162:8080/api/cart', { params: { user_id } })
+    axios.get('http://192.168.1.48:8080/api/cart', { params: { user_id } })
       .then((response) => {
         setCartItems(response.data);
       })
@@ -28,7 +28,7 @@ const ShoppingCart = ({ navigation }) => {
       userId: user_id,
     };
 
-    axios.post('http://10.8.63.162:8080/api/cart/add', cartData, {
+    axios.post('http://192.168.1.48:8080/api/cart/add', cartData, {
       headers: { 'Content-Type': 'application/json' },
     })
       .then(() => {
@@ -45,7 +45,7 @@ const ShoppingCart = ({ navigation }) => {
       userId: user_id,
     };
 
-    axios.delete('http://10.8.63.162:8080/api/cart/decrement', {
+    axios.delete('http://192.168.1.48:8080/api/cart/decrement', {
       data: cartData,
       headers: { 'Content-Type': 'application/json' },
     })
@@ -63,7 +63,7 @@ const ShoppingCart = ({ navigation }) => {
       userId: user_id,
     };
 
-    axios.delete('http://10.8.63.162:8080/api/cart/delete', {
+    axios.delete('http://192.168.1.48:8080/api/cart/delete', {
       data: cartData,
       headers: { 'Content-Type': 'application/json' },
     })

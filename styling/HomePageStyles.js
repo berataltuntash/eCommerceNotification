@@ -40,6 +40,13 @@ const styles = {
       color: 'white',
       fontWeight: 'bold',
     },
+    searchBar: {
+      margin: 10,
+      padding: 10,
+      borderWidth: 1,
+      borderColor: '#ccc',
+      borderRadius: 5,
+    },
   };
   
   export default styles;

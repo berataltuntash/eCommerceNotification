@@ -30,7 +30,7 @@ const SignupPage = () => {
       password
     };
 
-    axios.post('http://10.8.63.162:8080/api/login', userData, { headers: { 'Content-Type': 'application/json' } })
+    axios.post('http://192.168.1.48:8080/api/login', userData, { headers: { 'Content-Type': 'application/json' } })
       .then(response => {
         if (response.status === 201) {
 
